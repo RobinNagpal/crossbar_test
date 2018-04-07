@@ -14,6 +14,7 @@ crossbar==18.3.1
 cryptography==2.2.2
 enum34==1.1.6
 Flask==0.12.2
+Flask-Cors==3.0.3
 h2==3.0.1
 hpack==3.0.0
 hyperframe==5.1.0

@@ -1,11 +1,20 @@
+import json
+import logging
+import os
 import uuid
 
 import jwt
 from flask import Flask, jsonify
 from flask import abort
 from flask import request
+from flask_cors import CORS, cross_origin
+
+os.putenv('LANG', 'en_US.UTF-8')
+os.putenv('LC_ALL', 'en_US.UTF-8')
 
 app = Flask(__name__)
+CORS(app, support_credentials=True)
+
 jwt_secret = 'jwt_secret'
 
 users = [
@@ -31,14 +40,16 @@ users = [
 
 
 @app.route('/auth/users', methods=['GET'])
+@cross_origin()
 def get_users():
     return jsonify({'users': users})
 
 
 @app.route('/auth/login', methods=['POST'])
+@cross_origin(supports_credentials=True)
 def create_task():
-    request_json = request.json
-    print("Request", request_json)
+    request_json = json.loads(request.data)
+    # request_json = request.json
     if not request_json or not 'email' in request_json:
         abort(400)
     if not request_json or not 'password' in request_json:
@@ -67,6 +78,9 @@ def find_user(email):
         if user['email'] == email:
             return user
 
+
+logging.getLogger('flask_cors').level = logging.DEBUG
+logging._defaultFormatter = logging.Formatter(u"%(message)s")
 
 if __name__ == '__main__':
     app.run(debug=True)
