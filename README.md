@@ -10,20 +10,22 @@ Create a dev db:
 
 Install Pip. Dependency manager.
 
-    ```(root)$ sudo easy_install pip```
+`(root)$ sudo easy_install pip`
 
 Install virtual environement.
 
-    ```(root)$ sudo pip install virtualenv```
+`(root)$ sudo pip install virtualenv`
 
 Create environement.
 
-    ```(auth)$ virtualenv -p python3 p-env
-        (auth)$ pip3 install --upgrade virtualenv```
+`(auth)$ virtualenv -p python3 p-env`
+
+`(auth)$ pip3 install --upgrade virtualenv`
 
 Install dependencies.
 
-    ```(auth)$ pip3 install -r requirements.txt```
+`(auth)$ pip3 install -r requirements.txt`
 
 Activate virtual enironment.
-    ```(auth)$ source p-env/bin/activate ```
+
+`(auth)$ source p-env/bin/activate`
