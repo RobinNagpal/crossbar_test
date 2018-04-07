@@ -18,6 +18,6 @@ export class AppComponent {
   }
 
   onSubmit() {
-    this.authService.loginUser(this.user);
+    this.authService.loginUser(this.user).subscribe(res => this.user = res);
   }
 }
