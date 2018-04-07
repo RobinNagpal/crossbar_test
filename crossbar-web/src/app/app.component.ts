@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AuthService} from "./services/auth.service";
+import {AutobahnService} from "./services/autobahn.service";
 
 export interface User {
   id: string;
@@ -22,8 +23,12 @@ export class AppComponent {
     token: null
   };
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private autobahnService: AutobahnService
+  ) {
     this.authService = authService;
+    this.autobahnService = autobahnService;
   }
 
   onLogin() {
@@ -31,6 +36,6 @@ export class AppComponent {
   }
 
   connectToWamp() {
-    this.authService.loginUser(this.user).subscribe((res: User) => this.user = res);
+    this.autobahnService.connectToWamp(this.user.id, this.user.token);
   }
 }

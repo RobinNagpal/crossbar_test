@@ -1,9 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import {HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {AppComponent} from './app.component';
 import {AuthService} from "./services/auth.service";
+import {AutobahnService} from "./services/autobahn.service";
 
 
 @NgModule({
@@ -15,7 +16,11 @@ import {AuthService} from "./services/auth.service";
     BrowserModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    AutobahnService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
