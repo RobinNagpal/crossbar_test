@@ -57,7 +57,6 @@ def create_task():
     user = find_user(request_json['email'])
     if not user:
         abort(400)
-    print("User", user)
     if not request_json['password'] == user['password']:
         abort(400)
     user['token'] = jwt_encode(user)

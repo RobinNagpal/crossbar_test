@@ -5,19 +5,24 @@
   </h1>
 </div>
 <div *ngIf="user.token" class="login-details">
-  <div class="col-lg-6 col-md-8 col-sm-12">
+
+  <form (ngSubmit)="connectToWamp()" class="col-lg-6 col-md-8 col-sm-12">
+
     <div class="form-group">
       <label for="email">Id</label>
-      <div>{{user.id}}</div>
+      <input type="text" class="form-control" id="id" required
+             [(ngModel)]="user.id" name="id">
     </div>
     <div class="form-group">
       <label for="email">Token</label>
-      <div>{{user.token}}</div>
+      <input type="text" class="form-control" id="token" required
+             [(ngModel)]="user.token" name="token">
     </div>
-  </div>
+    <button type="submit" class="btn btn-success">Connect</button>
+  </form>
 </div>
 <div *ngIf="!user.token">
-  <form class="col-lg-6 col-md-8 col-sm-12" (ngSubmit)="onSubmit()">
+  <form class="col-lg-6 col-md-8 col-sm-12" (ngSubmit)="onLogin()">
 
     <div class="form-group">
       <label for="email">Email</label>
@@ -31,7 +36,7 @@
              [(ngModel)]="user.password" name="password">
     </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success">Login</button>
 
   </form>
 </div>

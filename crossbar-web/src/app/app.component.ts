@@ -1,6 +1,13 @@
 import {Component} from '@angular/core';
 import {AuthService} from "./services/auth.service";
 
+export interface User {
+  id: string;
+  email: string;
+  password: string;
+  token: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,16 +15,22 @@ import {AuthService} from "./services/auth.service";
 })
 export class AppComponent {
   title = 'Crossbar Test App';
-  user = {
-    'email': 'robinnagpal.tiet@gmail.com',
-    'password': 'secret'
+  user: User = {
+    id: null,
+    email: "robinnagpal.tiet@gmail.com",
+    password: "secret",
+    token: null
   };
 
   constructor(private authService: AuthService) {
     this.authService = authService;
   }
 
-  onSubmit() {
-    this.authService.loginUser(this.user).subscribe(res => this.user = res);
+  onLogin() {
+    this.authService.loginUser(this.user).subscribe((res: User) => this.user = res);
+  }
+
+  connectToWamp() {
+    this.authService.loginUser(this.user).subscribe((res: User) => this.user = res);
   }
 }
