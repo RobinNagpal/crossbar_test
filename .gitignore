@@ -1,0 +1,12 @@
+*.pyc
+node.pid
+*~
+.DS_Store
+node_modules
+bower_components
+node.key
+key.priv
+key.pub
+.idea/
+p-env/
+*.iml
