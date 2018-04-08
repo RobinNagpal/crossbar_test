@@ -68,16 +68,36 @@
               ]
             },
             {
+              "name": "notification_service",
+              "permissions": [
+                {
+                  "uri": "com.crossbar_test.notification",
+                  "match": "exact",
+                  "allow": {
+                    "call": true,
+                    "register": true,
+                    "publish": true,
+                    "subscribe": true
+                  },
+                  "disclose": {
+                    "caller": true,
+                    "publisher": true
+                  },
+                  "cache": true
+                }
+              ]
+            },
+            {
               "name": "frontend",
               "permissions": [
                 {
-                  "uri": "com.example.add2",
+                  "uri": "com.crossbar_test.notification",
                   "match": "exact",
                   "allow": {
                     "call": true,
                     "register": false,
                     "publish": false,
-                    "subscribe": false
+                    "subscribe": true
                   },
                   "disclose": {
                     "caller": false,

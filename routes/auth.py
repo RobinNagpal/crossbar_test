@@ -8,9 +8,12 @@ from flask import Flask, jsonify
 from flask import abort
 from flask import request
 from flask_cors import CORS, cross_origin
+from flask import Response
 
 os.putenv('LANG', 'en_US.UTF-8')
 os.putenv('LC_ALL', 'en_US.UTF-8')
+
+from routes.notification import NotificationService
 
 app = Flask(__name__)
 CORS(app, support_credentials=True)
@@ -19,7 +22,7 @@ jwt_secret = 'jwt_secret'
 
 users = [
     {
-        'id': str(uuid.uuid4()),
+        'id': "6a1290b4-a503-4b64-a953-3e89d7cb334b",
         'name': 'Robin Nagpal',
         'email': 'robinnagpal.tiet@gmail.com',
         'password': 'secret'
@@ -37,6 +40,8 @@ users = [
         'password': 'secret'
     }
 ]
+
+notification_service = NotificationService()
 
 
 @app.route('/auth/users', methods=['GET'])
@@ -69,10 +74,27 @@ def get_user():
     token = request.args.get('token')
     decoded = jwt_decode(token)
     user_id = decoded['user_id']
-    print(decoded , user_id)
+    print(decoded, user_id)
     user = find_user_by_id(user_id)
 
     return jsonify(user)
+
+
+@app.route('/notification/notify', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def send_message_to_user():
+    request_json = json.loads(request.data)
+
+    if not request_json or not 'user_id' in request_json:
+        abort(400)
+
+    if not request_json or not 'message' in request_json:
+        abort(400)
+
+    print("will call notification_service.publish_message to send message")
+
+    notification_service.publish_message(request_json['user_id'], request_json['message'])
+    return jsonify(request_json, 201)
 
 
 def jwt_encode(user):
