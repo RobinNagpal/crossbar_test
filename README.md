@@ -29,3 +29,13 @@ Install dependencies.
 Activate virtual enironment.
 
 `(auth)$ source p-env/bin/activate`
+
+
+
+Goals
+- Have a way for user can authenticate 
+- Allow server to route messages to specific client
+
+Good to have
+- Use existing JWT token mechanism 
+- Try to use Python and angular 5
