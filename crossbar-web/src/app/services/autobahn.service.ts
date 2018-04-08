@@ -39,13 +39,18 @@ export class AutobahnService {
       console.log("authenticated with authid '" + details.authid + "' and authrole '" + details.authrole + "'");
 
 
-      session.subscribe('com.crossbar_test.notification', function (args, kwargs) {
-      }).then(
+      function onhello(args) {
+        var msg = args[0];
+        console.log("event received on topic " + topic + ": " + msg);
+      }
+
+      const topic = 'com.crossbar_test.notification';
+      session.subscribe(topic, onhello).then(
         function () {
-          console.log("huh, function registered!");
+          console.log("ok, subscribed to topic " + topic);
         },
-        function (err) {
-          console.log("registration failed - this is expected", err);
+        function (e) {
+          console.log("could not subscribe to topic " + topic + ": " + e.error);
         }
       );
     };

@@ -94,7 +94,7 @@ def send_message_to_user():
     print("will call notification_service.publish_message to send message")
 
     notification_service.publish_message(request_json['user_id'], request_json['message'])
-    return jsonify(request_json, 201)
+    return jsonify(request_json), 201
 
 
 def jwt_encode(user):

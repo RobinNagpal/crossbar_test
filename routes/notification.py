@@ -96,7 +96,7 @@ class NotificationService(ApplicationSession):
             print("Okay")
             return_val = self.wamp_client.publish(
                 "com.crossbar_test.notification",
-                "hello",
+                message,
                 options=PublishOptions(
                     acknowledge=True,
                     eligible_authid=user_id
