@@ -57,7 +57,7 @@ class AuthenticatorSession(ApplicationSession):
                                        "could not authenticate session - no such principal {}".format(authid))
 
         try:
-            yield self.register(authenticate, 'com.example.authenticate')
+            yield self.register(authenticate, 'com.crossbar_test.authenticate')
             print("WAMP-Ticket dynamic authenticator registered!")
         except Exception as e:
             print("Failed to register dynamic authenticator: {0}".format(e))
