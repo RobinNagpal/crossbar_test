@@ -18,7 +18,7 @@ click==6.7
 constantly==15.1.0
 crochet==1.9.0
 crossbar==18.3.1
-cryptography==2.2.2
+cryptography==3.2
 decorator==4.2.1
 enum-compat==0.0.2
 enum34==1.1.6
