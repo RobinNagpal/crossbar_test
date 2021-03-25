@@ -64,7 +64,7 @@ pyOpenSSL==17.5.0
 PyQRCode==1.2.1
 pytest==3.4.1
 PyTrie==0.3
-PyYAML==3.12
+PyYAML==5.4
 requests==2.18.1
 sdnotify==0.3.2
 service-identity==17.0.0
