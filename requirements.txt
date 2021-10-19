@@ -42,7 +42,7 @@ marshmallow==2.15.0
 marshmallow-enum==1.4.1
 mistune==0.8.3
 mock==2.0.0
-nameko==2.8.4
+nameko==2.14.0
 netaddr==0.7.19
 path.py==11.0
 pathtools==0.1.2
