@@ -78,7 +78,7 @@ sqlalchemy-migrate==0.11.0
 sqlparse==0.2.4
 Tempita==0.5.2
 treq==17.8.0
-Twisted==17.9.0
+Twisted==22.10.0
 txaio==2.9.0
 txtorcon==0.20.0
 u-msgpack-python==2.5.0
